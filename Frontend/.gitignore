@@ -10,7 +10,13 @@ node_modules/
 .env
 .env.*
 !.env.example
+# Dependencies
+node_modules/
+**/node_modules/
 
+# Environment files
+.env
+.env.*
 # =========================
 # Logs
 # =========================
