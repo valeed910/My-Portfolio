@@ -172,7 +172,7 @@ form.addEventListener("submit", async (e) => {
 
     try {
 
-        const res = await fetch("http://localhost:5000/api/contact", {
+        const res = await fetch("https://my-portfolio-m43t.onrender.com", {
 
             method: "POST",
 
