@@ -2,23 +2,15 @@ require("dotenv").config();
 
 const express = require("express");
 const cors = require("cors");
-const nodemailer = require("nodemailer");
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
-const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 587,
-    secure: false,
-    auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
-    }
-});
+const { Resend } = require("resend");
 
+const resend = new Resend(process.env.RESEND_API_KEY);
 // Add this
 app.get("/", (req, res) => {
     res.send("THIS IS MY NEW BACKEND 123456");
@@ -39,32 +31,28 @@ app.post("/api/contact", async (req, res) => {
             });
 
         }
-
-        await transporter.sendMail({
-
-            from: process.env.EMAIL_USER,
-
+        const { data, error } = await resend.emails.send({
+            from: "Portfolio <onboarding@resend.dev>",
             to: process.env.EMAIL_USER,
-
             replyTo: email,
-
             subject: `Portfolio Contact - ${subject}`,
-
             html: `
                 <h2>New Portfolio Message</h2>
-
                 <p><b>Name:</b> ${name}</p>
-
                 <p><b>Email:</b> ${email}</p>
-
                 <p><b>Subject:</b> ${subject}</p>
-
                 <p><b>Message:</b></p>
-
                 <p>${message}</p>
             `
-
         });
+        
+        if (error) {
+            console.error(error);
+            return res.status(500).json({
+                success: false,
+                message: error.message
+            });
+}       
 
         res.json({
             success: true
