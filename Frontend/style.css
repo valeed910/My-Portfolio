@@ -3,17 +3,31 @@
     padding:0;
     box-sizing:border-box
   }
+:root{
+  --bg:#08110D;
+  --bg2:#0F1813;
+  --bg3:#17231B;
 
-  :root{
-    --bg:#060912;--bg2:#0b1020;--bg3:#111827;
-    --text:#f0f4ff;--text2:#a0aec0;--text3:#4a5568;
-    --accent:#6c63ff;--accent2:#a78bfa;--accent3:#38bdf8;
-    --green:#10b981;--pink:#f472b6;
-    --border:rgba(108,99,255,0.2);--border2:rgba(255,255,255,0.06);
-    --card:rgba(255,255,255,0.03);--card2:rgba(108,99,255,0.08);
-    --glow:rgba(108,99,255,0.15);
-  }
+  --text:#F3F6F3;
+  --text2:#B4C6BA;
+  --text3:#718374;
 
+  --accent:#3DDB84;
+  --accent2:#71F0AE;
+  --accent3:#24B66A;
+
+  --green:#3DDB84;
+
+  --pink:#F4B860;
+
+  --border:rgba(61,219,132,.16);
+  --border2:rgba(255,255,255,.05);
+
+  --card:rgba(61,219,132,.05);
+  --card2:rgba(61,219,132,.08);
+
+  --glow:rgba(61,219,132,.18);
+}
   html{
     scroll-behavior:smooth;
     overflow-x:hidden
@@ -26,6 +40,12 @@
     overflow-x:hidden;
     line-height:1.6
   }
+  body{
+    background:
+        radial-gradient(circle at top left, rgba(124,255,79,.08), transparent 40%),
+        radial-gradient(circle at bottom right, rgba(124,255,79,.05), transparent 35%),
+        #050807;
+}
 
 /* CANVAS */
   #bg-canvas{
@@ -273,8 +293,8 @@
 
   .btn-primary{
     padding:12px 28px;
-    background:linear-gradient(135deg,var(--accent),#8b5cf6);
-    color:#fff;
+background: linear-gradient(135deg,#7CFF4F,#4DD218);
+box-shadow: 0 10px 35px rgba(124,255,79,.28);    color:#fff;
     border:none;
     border-radius:10px;
     font-size:14px;
